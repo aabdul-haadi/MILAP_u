@@ -1,16 +1,40 @@
-import React from 'react';
+// import React from 'react';
 import { X } from 'lucide-react';
 
 export interface AppearanceData {
-  upperWear: string[];
-  upperWearColor: string;
-  overWear: string[];
-  overWearColor: string;
-  lowerWear: string[];
-  lowerWearColor: string;
-  footWear: string[];
-  footWearColor: string;
-}
+    upperWear: string[];
+    upperWearColor: string;
+    overWear: string[];
+    overWearColor: string;
+    lowerWear: string[];
+    lowerWearColor: string;
+    footWear: string[];
+    footWearColor: string;
+    socksColor: string;
+    headGear: string[];
+    headGearColor: string;
+    hairDetails: string[];
+    complexion: string[];
+    eyesColor: string[];
+    supportiveEquipment: string[];
+    bodyWearings: string;
+    belongings: string;
+    languages: string;
+    mentalCondition: string;
+    physicalCondition: string;
+    birthMark: boolean;
+    birthMarkBodyPart: string;
+    scars: boolean;
+    scarsBodyPart: string;
+    tattoo: boolean;
+    tattooBodyPart: string;
+    moles: boolean;
+    molesBodyPart: string;
+    pigmentation: boolean;
+    pigmentationBodyPart: string;
+  }
+  
+  
 
 interface AppearanceModalProps {
   appearance: AppearanceData;
@@ -180,6 +204,275 @@ export function AppearanceModal({
               </select>
             </div>
           </div>
+
+          {/* Color of Socks */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Color of Socks</label>
+  <select
+    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+    value={appearance.socksColor}
+    onChange={(e) => onColorChange('socksColor', e.target.value)}
+  >
+    <option value="">Choose Color</option>
+    {['Black', 'White', 'Red', 'Blue', 'Green', 'Yellow'].map((color) => (
+      <option key={color} value={color}>{color}</option>
+    ))}
+  </select>
+</div>
+
+{/* Head Gear Section */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Head Gear</label>
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {['Dupatta', 'Scarf', 'Cap', 'Peaked Cap', 'Prayer Cap', 'Sindhi Cap', 'Turban', 'Other'].map((item) => (
+      <label key={item} className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          checked={appearance.headGear.includes(item)}
+          onChange={() => onCheckboxChange('headGear', item)}
+          className="rounded border-gray-300"
+        />
+        <span>{item}</span>
+      </label>
+    ))}
+  </div>
+  <div>
+    <label className="block text-sm font-medium text-gray-700">Color Of The Head Gear</label>
+    <select
+      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+      value={appearance.headGearColor}
+      onChange={(e) => onColorChange('headGearColor', e.target.value)}
+    >
+      <option value="">Choose Color</option>
+      {['Black', 'White', 'Red', 'Blue', 'Green', 'Yellow'].map((color) => (
+        <option key={color} value={color}>{color}</option>
+      ))}
+    </select>
+  </div>
+</div>
+
+{/* Hair Details Section */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Hair Details</label>
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {['Half Bald', 'Bald', 'Normal Haircut', 'No Haircut', 'Braid', 'Bun', 'Long Hair', 'Hair Clips', 'Ponytail'].map((item) => (
+      <label key={item} className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          checked={appearance.hairDetails.includes(item)}
+          onChange={() => onCheckboxChange('hairDetails', item)}
+          className="rounded border-gray-300"
+        />
+        <span>{item}</span>
+      </label>
+    ))}
+  </div>
+</div>
+
+{/* Complexion Section */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Color Complexion</label>
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {['Fair', 'Wheatish', 'Dark'].map((item) => (
+      <label key={item} className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          checked={appearance.complexion.includes(item)}
+          onChange={() => onCheckboxChange('complexion', item)}
+          className="rounded border-gray-300"
+        />
+        <span>{item}</span>
+      </label>
+    ))}
+  </div>
+</div>
+
+{/* Eye Color Section */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Eyes Color</label>
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {['Black', 'Brownish Black', 'Grey', 'Blue'].map((item) => (
+      <label key={item} className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          checked={appearance.eyesColor.includes(item)}
+          onChange={() => onCheckboxChange('eyesColor', item)}
+          className="rounded border-gray-300"
+        />
+        <span>{item}</span>
+      </label>
+    ))}
+  </div>
+</div>
+
+{/* Supportive Equipment Section */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Supportive Equipment (If Any)</label>
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    {['Eye Glasses', 'Hearing Aid', 'Crutches'].map((item) => (
+      <label key={item} className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          checked={appearance.supportiveEquipment.includes(item)}
+          onChange={() => onCheckboxChange('supportiveEquipment', item)}
+          className="rounded border-gray-300"
+        />
+        <span>{item}</span>
+      </label>
+    ))}
+  </div>
+</div>
+
+{/* Body Wearings */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Body Wearings (If Any)</label>
+  <select
+    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+    value={appearance.bodyWearings}
+    onChange={(e) => onColorChange('bodyWearings', e.target.value)}
+  >
+    <option value="">Choose Wearings</option>
+  </select>
+</div>
+
+
+{/* Unique Physical Identifiers Section */}
+<div className="space-y-4">
+  <h3 className="text-lg font-semibold text-gray-700">Unique Physical Identifiers (If Any)</h3>
+
+  {/* Birth Mark */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700">Birth Mark</label>
+    <input
+      type="checkbox"
+      checked={appearance.birthMark}
+      onChange={() => onCheckboxChange('birthMark', 'Birth Mark')}
+      className="rounded border-gray-300"
+    />
+    <input
+      type="text"
+      placeholder="Which Part of Body"
+      className="mt-2 block w-full rounded-md border-gray-300 shadow-sm"
+      value={appearance.birthMarkBodyPart}
+      onChange={(e) => onColorChange('birthMarkBodyPart', e.target.value)}
+    />
+    <input type="file" className="mt-2 block w-full" />
+  </div>
+
+  {/* Scars/Burn Marks */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700">Scars / Burn Marks</label>
+    <input
+      type="checkbox"
+      checked={appearance.scars}
+      onChange={() => onCheckboxChange('scars', 'Scars')}
+      className="rounded border-gray-300"
+    />
+    <input
+      type="text"
+      placeholder="Which Part of Body"
+      className="mt-2 block w-full rounded-md border-gray-300 shadow-sm"
+      value={appearance.scarsBodyPart}
+      onChange={(e) => onColorChange('scarsBodyPart', e.target.value)}
+    />
+    <input type="file" className="mt-2 block w-full" />
+  </div>
+
+  {/* Tattoo */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700">Tattoo</label>
+    <input
+      type="checkbox"
+      checked={appearance.tattoo}
+      onChange={() => onCheckboxChange('tattoo', 'Tattoo')}
+      className="rounded border-gray-300"
+    />
+    <input
+      type="text"
+      placeholder="Which Part of Body"
+      className="mt-2 block w-full rounded-md border-gray-300 shadow-sm"
+      value={appearance.tattooBodyPart}
+      onChange={(e) => onColorChange('tattooBodyPart', e.target.value)}
+    />
+    <input type="file" className="mt-2 block w-full" />
+  </div>
+
+  {/* Significant Moles */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700">Significant Moles</label>
+    <input
+      type="checkbox"
+      checked={appearance.moles}
+      onChange={() => onCheckboxChange('moles', 'Moles')}
+      className="rounded border-gray-300"
+    />
+    <input
+      type="text"
+      placeholder="Which Part of Body"
+      className="mt-2 block w-full rounded-md border-gray-300 shadow-sm"
+      value={appearance.molesBodyPart}
+      onChange={(e) => onColorChange('molesBodyPart', e.target.value)}
+    />
+    <input type="file" className="mt-2 block w-full" />
+  </div>
+
+  {/* Pigmentation */}
+  <div>
+    <label className="block text-sm font-medium text-gray-700">Pigmentation</label>
+    <input
+      type="checkbox"
+      checked={appearance.pigmentation}
+      onChange={() => onCheckboxChange('pigmentation', 'Pigmentation')}
+      className="rounded border-gray-300"
+    />
+    <input
+      type="text"
+      placeholder="Which Part of Body"
+      className="mt-2 block w-full rounded-md border-gray-300 shadow-sm"
+      value={appearance.pigmentationBodyPart}
+      onChange={(e) => onColorChange('pigmentationBodyPart', e.target.value)}
+    />
+    <input type="file" className="mt-2 block w-full" />
+  </div>
+</div>
+
+
+{/* Languages Spoken */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Languages Can Speak</label>
+  <select
+    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+    value={appearance.languages}
+    onChange={(e) => onColorChange('languages', e.target.value)}
+  >
+    <option value="">Select Language</option>
+  </select>
+</div>
+
+{/* Mental Condition */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Details Of Mental Condition</label>
+  <select
+    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+    value={appearance.mentalCondition}
+    onChange={(e) => onColorChange('mentalCondition', e.target.value)}
+  >
+    <option value="">Choose Your Option</option>
+  </select>
+</div>
+
+{/* Physical Condition */}
+<div className="space-y-4">
+  <label className="block text-sm font-medium text-gray-700">Details For Physically Challenged Person</label>
+  <select
+    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+    value={appearance.physicalCondition}
+    onChange={(e) => onColorChange('physicalCondition', e.target.value)}
+  >
+    <option value="">Choose Your Option</option>
+  </select>
+</div>
+
         </div>
 
         <div className="sticky bottom-0 bg-gray-50 px-6 py-4 rounded-b-lg">

@@ -8,7 +8,6 @@ interface Person {
   phone: string;
   relationship: string;
 }
-
 export function AddLostPerson() {
   const [persons, setPersons] = useState<Person[]>([{ id: Date.now(), name: "", phone: "", relationship: "" }]);
   const [showAppearanceModal, setShowAppearanceModal] = useState(false);
@@ -21,6 +20,28 @@ export function AddLostPerson() {
     lowerWearColor: "",
     footWear: [],
     footWearColor: "",
+    socksColor: "",
+    headGear: [],
+    headGearColor: "",
+    hairDetails: [],
+    complexion: [],
+    eyesColor: [],
+    supportiveEquipment: [],
+    bodyWearings: "",
+    belongings: "",
+    languages: "",
+    mentalCondition: "",
+    physicalCondition: "",
+    birthMark: false,
+    birthMarkBodyPart: "",
+    scars: false,
+    scarsBodyPart: "",
+    tattoo: false,
+    tattooBodyPart: "",
+    moles: false,
+    molesBodyPart: "",
+    pigmentation: false,
+    pigmentationBodyPart: "",
   });
 
   // Function to add a new person dynamically
@@ -46,13 +67,15 @@ export function AddLostPerson() {
   const handleCheckboxChange = (category: keyof AppearanceData, value: string) => {
     setAppearance(prev => ({
       ...prev,
-      [category]: prev[category].includes(value)
-        ? prev[category].filter(item => item !== value)
-        : [...prev[category], value]
+      [category]: Array.isArray(prev[category])
+        ? prev[category].includes(value)
+          ? prev[category].filter(item => item !== value)
+          : [...prev[category], value]
+        : !prev[category] // For boolean fields like birthMark, scars, etc.
     }));
   };
 
-  // Function to handle color selection in appearance
+  // Function to handle color selection and input fields in appearance
   const handleColorChange = (category: string, value: string) => {
     setAppearance(prev => ({
       ...prev,
@@ -218,7 +241,7 @@ export function AddLostPerson() {
               onClick={addPerson}
               className="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300"
             >
-              <span className="mr-2 text-lg">➕</span> Add Another
+              <span className="mr-2 text-lg">＋</span> Add Another
             </button>
           </div>
         </div>
