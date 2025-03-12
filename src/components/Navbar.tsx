@@ -76,8 +76,10 @@ export function Navbar({ isLoggedIn, username, onLogout, transparent = false }: 
                   <Link to="/lost/add" className="block px-4 py-2 hover:bg-gray-100">Add a Lost Person</Link>
                   <Link to="/lost/search" className="block px-4 py-2 hover:bg-gray-100">Search Among Lost Persons</Link>
                   <Link to="/lost/update" className="block px-4 py-2 hover:bg-gray-100">Update Among Lost Persons</Link>
-                </div>
+                  </div>
               )}
+
+              
             </div>
 
             <div className="relative">
@@ -93,15 +95,18 @@ export function Navbar({ isLoggedIn, username, onLogout, transparent = false }: 
               </button>
               {foundPersonsOpen && (
                 <div className="absolute z-10 mt-2 w-60 bg-white rounded-md shadow-lg py-1 text-black">
-                  <Link to="/found/add-person" className="block px-4 py-2 hover:bg-gray-100">Add a Found Person</Link>
-                  <Link to="/found/add-corpse" className="block px-4 py-2 hover:bg-gray-100">Add a Found Corpse</Link>
-                  <Link to="/found/search" className="block px-4 py-2 hover:bg-gray-100">Search Among Found Persons/Corpses</Link>
-                  <Link to="/found/update" className="block px-4 py-2 hover:bg-gray-100">Update Found Person/Corpse Details</Link>
+                <Link to="/found/add-person" className="block px-4 py-2 hover:bg-gray-100">Add a Found Person</Link>
+                <Link to="/found/add-corpse" className="block px-4 py-2 hover:bg-gray-100">Add a Found Corpse</Link>
+                <Link to="/found/search" className="block px-4 py-2 hover:bg-gray-100">Search Among Found Persons/Corpses</Link>
+              
+              
+                 {/* Add the new update link here */}
+          <Link to="/found/update" className="block px-4 py-2 hover:bg-gray-100">Update Found Person/Corpse Details</Link>
                 </div>
               )}
             </div>
 
-            <Link to="/at-risk/add" className="hover:text-green-500">Add a Person at Risk</Link>
+            <Link to="/person-at-risk/" className="hover:text-green-500">Add a Person at Risk</Link>
 
 <div className="relative">
   <button
@@ -280,7 +285,7 @@ export function Navbar({ isLoggedIn, username, onLogout, transparent = false }: 
                 </div>
               )}
 
-              <Link to="/at-risk/add" className="hover:text-green-500">Add a Person at Risk</Link>
+              <Link to="/person-at-risk" className="hover:text-green-500">Add a Person at Risk</Link>
 
               <button 
                 onClick={() => setQuickLinksOpen(!quickLinksOpen)}

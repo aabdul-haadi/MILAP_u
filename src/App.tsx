@@ -5,6 +5,16 @@ import { AddLostPerson } from './pages/lost/AddLostPerson';
 import { AddFoundPerson } from './pages/found/AddFoundPerson';
 import { Login } from './pages/auth/Login';
 import { Database, Users, Link2 } from 'lucide-react';
+import { AddPersonAtRisk } from './pages/PersonAtRisk/AddPersonAtRisk'; // Import the AddPersonAtRisk component
+import { SearchLostPerson } from './pages/lost/SearchLostPerson'; // Import the new SearchLostPerson component
+import { UpdateLostPerson } from './pages/lost/UpdateLostPerson'; // Import the new UpdateLostPerson component
+import { AddFoundCorpse } from './pages/found/AddFoundCorpse'; // Import AddFoundCorpse component
+import { SearchFoundPersonCorpse } from './pages/found/SearchFoundPersonCorpse'; // Import the new SearchFoundPersonCorpse component
+import { UpdateFoundPersonCorpse } from './pages/found/UpdateFoundPersonCorpse'; // Import UpdateFoundPersonCorpse component
+
+
+
+
 
 function HeroSection() {
   return (
@@ -76,10 +86,19 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<HomePage />} />
         <Route path="/lost/add" element={<AddLostPerson />} />
         <Route path="/found/add-person" element={<AddFoundPerson />} />
+        <Route path="/found/add-corpse" element={<AddFoundCorpse />} />  {/* New route for AddFoundCorpse */}
         <Route path="/login" element={<Login />} />
+        <Route path="/person-at-risk" element={<AddPersonAtRisk />} />
+        <Route path="/lost/search" element={<SearchLostPerson />} />
+        <Route path="/lost/update" element={<UpdateLostPerson />} />
+        
+        {/* New Route for Searching Among Found Persons/Corpses */}
+        <Route path="/found/search" element={<SearchFoundPersonCorpse />} />
+        <Route path="/found/update" element={<UpdateFoundPersonCorpse />} />
+
       </Routes>
     </Router>
   );

@@ -335,20 +335,22 @@ export function AppearanceModal({
   </select>
 </div>
 
-
 {/* Unique Physical Identifiers Section */}
-<div className="space-y-4">
+<div className="space-y-6">
   <h3 className="text-lg font-semibold text-gray-700">Unique Physical Identifiers (If Any)</h3>
 
   {/* Birth Mark */}
-  <div>
+  <div className="flex flex-col space-y-2">
     <label className="block text-sm font-medium text-gray-700">Birth Mark</label>
-    <input
-      type="checkbox"
-      checked={appearance.birthMark}
-      onChange={() => onCheckboxChange('birthMark', 'Birth Mark')}
-      className="rounded border-gray-300"
-    />
+    <div className="flex items-center space-x-2">
+      <input
+        type="checkbox"
+        checked={appearance.birthMark}
+        onChange={() => onCheckboxChange('birthMark', 'Birth Mark')}
+        className="rounded border-gray-300"
+      />
+      <span>Has Birth Mark</span>
+    </div>
     <input
       type="text"
       placeholder="Which Part of Body"
@@ -360,14 +362,17 @@ export function AppearanceModal({
   </div>
 
   {/* Scars/Burn Marks */}
-  <div>
+  <div className="flex flex-col space-y-2">
     <label className="block text-sm font-medium text-gray-700">Scars / Burn Marks</label>
-    <input
-      type="checkbox"
-      checked={appearance.scars}
-      onChange={() => onCheckboxChange('scars', 'Scars')}
-      className="rounded border-gray-300"
-    />
+    <div className="flex items-center space-x-2">
+      <input
+        type="checkbox"
+        checked={appearance.scars}
+        onChange={() => onCheckboxChange('scars', 'Scars')}
+        className="rounded border-gray-300"
+      />
+      <span>Has Scars or Burn Marks</span>
+    </div>
     <input
       type="text"
       placeholder="Which Part of Body"
@@ -379,14 +384,17 @@ export function AppearanceModal({
   </div>
 
   {/* Tattoo */}
-  <div>
+  <div className="flex flex-col space-y-2">
     <label className="block text-sm font-medium text-gray-700">Tattoo</label>
-    <input
-      type="checkbox"
-      checked={appearance.tattoo}
-      onChange={() => onCheckboxChange('tattoo', 'Tattoo')}
-      className="rounded border-gray-300"
-    />
+    <div className="flex items-center space-x-2">
+      <input
+        type="checkbox"
+        checked={appearance.tattoo}
+        onChange={() => onCheckboxChange('tattoo', 'Tattoo')}
+        className="rounded border-gray-300"
+      />
+      <span>Has Tattoo</span>
+    </div>
     <input
       type="text"
       placeholder="Which Part of Body"
@@ -398,14 +406,17 @@ export function AppearanceModal({
   </div>
 
   {/* Significant Moles */}
-  <div>
+  <div className="flex flex-col space-y-2">
     <label className="block text-sm font-medium text-gray-700">Significant Moles</label>
-    <input
-      type="checkbox"
-      checked={appearance.moles}
-      onChange={() => onCheckboxChange('moles', 'Moles')}
-      className="rounded border-gray-300"
-    />
+    <div className="flex items-center space-x-2">
+      <input
+        type="checkbox"
+        checked={appearance.moles}
+        onChange={() => onCheckboxChange('moles', 'Moles')}
+        className="rounded border-gray-300"
+      />
+      <span>Has Significant Moles</span>
+    </div>
     <input
       type="text"
       placeholder="Which Part of Body"
@@ -417,14 +428,17 @@ export function AppearanceModal({
   </div>
 
   {/* Pigmentation */}
-  <div>
+  <div className="flex flex-col space-y-2">
     <label className="block text-sm font-medium text-gray-700">Pigmentation</label>
-    <input
-      type="checkbox"
-      checked={appearance.pigmentation}
-      onChange={() => onCheckboxChange('pigmentation', 'Pigmentation')}
-      className="rounded border-gray-300"
-    />
+    <div className="flex items-center space-x-2">
+      <input
+        type="checkbox"
+        checked={appearance.pigmentation}
+        onChange={() => onCheckboxChange('pigmentation', 'Pigmentation')}
+        className="rounded border-gray-300"
+      />
+      <span>Has Pigmentation</span>
+    </div>
     <input
       type="text"
       placeholder="Which Part of Body"
@@ -436,9 +450,8 @@ export function AppearanceModal({
   </div>
 </div>
 
-
 {/* Languages Spoken */}
-<div className="space-y-4">
+<div className="flex flex-col space-y-4">
   <label className="block text-sm font-medium text-gray-700">Languages Can Speak</label>
   <select
     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
@@ -446,11 +459,15 @@ export function AppearanceModal({
     onChange={(e) => onColorChange('languages', e.target.value)}
   >
     <option value="">Select Language</option>
+    <option value="English">English</option>
+    <option value="Spanish">Spanish</option>
+    <option value="French">French</option>
+    {/* Add more languages as required */}
   </select>
 </div>
 
 {/* Mental Condition */}
-<div className="space-y-4">
+<div className="flex flex-col space-y-4">
   <label className="block text-sm font-medium text-gray-700">Details Of Mental Condition</label>
   <select
     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
@@ -458,11 +475,15 @@ export function AppearanceModal({
     onChange={(e) => onColorChange('mentalCondition', e.target.value)}
   >
     <option value="">Choose Your Option</option>
+    <option value="Normal">Normal</option>
+    <option value="Anxiety">Anxiety</option>
+    <option value="Depression">Depression</option>
+    {/* Add more options as required */}
   </select>
 </div>
 
 {/* Physical Condition */}
-<div className="space-y-4">
+<div className="flex flex-col space-y-4">
   <label className="block text-sm font-medium text-gray-700">Details For Physically Challenged Person</label>
   <select
     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
@@ -470,8 +491,14 @@ export function AppearanceModal({
     onChange={(e) => onColorChange('physicalCondition', e.target.value)}
   >
     <option value="">Choose Your Option</option>
+    <option value="No Disability">No Disability</option>
+    <option value="Wheelchair">Wheelchair</option>
+    <option value="Hearing Impairment">Hearing Impairment</option>
+    {/* Add more options as required */}
   </select>
 </div>
+
+
 
         </div>
 
