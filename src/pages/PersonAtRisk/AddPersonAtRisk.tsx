@@ -251,7 +251,7 @@ export function AddPersonAtRisk() {
           </div>
         </div>
 
-        {/* Appearance Section */}
+        {/* Appearance Section
         <div className="p-1 w-full">
           <button
             type="button"
@@ -260,9 +260,9 @@ export function AddPersonAtRisk() {
           >
             Add Appearance
           </button>
-        </div>
+        </div> */}
 
-        {showAppearanceModal && (
+        {/* {showAppearanceModal && (
           <AppearanceModal
             appearance={appearance}
             onClose={() => setShowAppearanceModal(false)}
@@ -270,7 +270,7 @@ export function AddPersonAtRisk() {
             onCheckboxChange={handleCheckboxChange}
             onColorChange={handleColorChange}
           />
-        )}
+        )} */}
 
         {/* Concerned Police Station / Office Information */}
         <div className="p-1 max-w-screen-xl mx-auto w-full">
@@ -325,6 +325,31 @@ export function AddPersonAtRisk() {
             ></textarea>
           </div>
         </div>
+
+
+          {/* Appearance Section */}
+        <div className="p-1 w-full">
+          <button
+            type="button"
+            onClick={() => setShowAppearanceModal(true)}
+            className="w-full bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300"
+          >
+            Add Appearance
+          </button>
+        </div>
+
+
+ {showAppearanceModal && (
+          <AppearanceModal
+            appearance={appearance}
+            onClose={() => setShowAppearanceModal(false)}
+            onSave={() => setShowAppearanceModal(false)}
+            onCheckboxChange={handleCheckboxChange}
+            onColorChange={handleColorChange}
+          />
+        )}
+
+
 
         {/* Submit Button */}
         <div className="p-1 max-w-screen-xl mx-auto w-full">
