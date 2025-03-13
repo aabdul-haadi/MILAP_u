@@ -18,7 +18,7 @@ import { UpdateFoundPersonCorpse } from './pages/found/UpdateFoundPersonCorpse';
 
 function HeroSection() {
   return (
-    <div className="text-center py-8 md:py-16 bg-gray-50 px-4">
+    <div className="text-center py-8 md:py-8 bg-gray-50 px-4">
       <h1 className="text-2xl md:text-4xl font-bold mb-4">
         A Nationwide Initiative By Sindh Police For Collaboration<br className="hidden md:block" />
         In Finding <span className="text-red-600">LOST PERSONS</span>
@@ -44,7 +44,7 @@ function FeatureCard({ icon: Icon, title, description }: { icon: any; title: str
 
 function SystemFeatures() {
   return (
-    <div className="bg-gray-100 py-12 md:py-16">
+    <div className="bg-gray-100 py-12 md:py-8">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
           How Our System Works
