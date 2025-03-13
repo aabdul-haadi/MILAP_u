@@ -44,7 +44,7 @@ interface AppearanceModalProps {
   onColorChange: (category: string, value: string) => void;
 }
 
-export function AppearanceModal({
+ function AppearanceModal({
   appearance,
   onClose,
   onSave,
@@ -514,3 +514,4 @@ export function AppearanceModal({
     </div>
   );
 }
+export default AppearanceModal;

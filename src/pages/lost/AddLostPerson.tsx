@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FormLayout } from "../../components/FormLayout";
-import { AppearanceModal, type AppearanceData } from "./AppearanceModal";
+import AppearanceModal, { type AppearanceData } from "./AppearanceModal";
 
 interface Person {
   id: number;
