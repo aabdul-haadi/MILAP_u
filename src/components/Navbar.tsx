@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Database, User, LogOut, Menu, X } from 'lucide-react';
+import { User, LogOut, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface NavbarProps {
@@ -328,3 +328,4 @@ export function Navbar({ isLoggedIn, username, onLogout, transparent = false }: 
     </nav>
   );
 }
+export default Navbar;

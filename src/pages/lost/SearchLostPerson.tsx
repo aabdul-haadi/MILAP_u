@@ -172,12 +172,14 @@ export function SearchLostPerson() {
     });
   };
 
-  const handleColorChange = (category: keyof typeof appearanceData, value: string) => {
+ const handleColorChange = (category: string, value: string) => {
+  if (category in appearanceData) {
     setAppearanceData(prev => ({
       ...prev,
       [category]: value,
     }));
-  };
+  }
+};
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -187,7 +189,9 @@ export function SearchLostPerson() {
   };
 
   return (
-    <FormLayout title="Advance Search">
+    <FormLayout title="Search Among Lost">
+<div className="font-bold text-black">Advance Search</div>
+
       <div className="text-gray-600 mb-8">See Results Based On Your Filters</div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

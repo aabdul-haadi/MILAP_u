@@ -1,20 +1,17 @@
-// import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { AddLostPerson } from './pages/lost/AddLostPerson';
 import { AddFoundPerson } from './pages/found/AddFoundPerson';
 import { Login } from './pages/auth/Login';
+import { SignUp } from './pages/auth/SignUp';
 import { Database, Users, Link2 } from 'lucide-react';
-import { AddPersonAtRisk } from './pages/PersonAtRisk/AddPersonAtRisk'; // Import the AddPersonAtRisk component
-import { SearchLostPerson } from './pages/lost/SearchLostPerson'; // Import the new SearchLostPerson component
-import { UpdateLostPerson } from './pages/lost/UpdateLostPerson'; // Import the new UpdateLostPerson component
-import { AddFoundCorpse } from './pages/found/AddFoundCorpse'; // Import AddFoundCorpse component
-import { SearchFoundPersonCorpse } from './pages/found/SearchFoundPersonCorpse'; // Import the new SearchFoundPersonCorpse component
-import { UpdateFoundPersonCorpse } from './pages/found/UpdateFoundPersonCorpse'; // Import UpdateFoundPersonCorpse component
-
-
-
-
+import { AddPersonAtRisk } from './pages/PersonAtRisk/AddPersonAtRisk';
+import { SearchLostPerson } from './pages/lost/SearchLostPerson';
+import { UpdateLostPerson } from './pages/lost/UpdateLostPerson';
+import { AddFoundCorpse } from './pages/found/AddFoundCorpse';
+import { SearchFoundPersonCorpse } from './pages/found/SearchFoundPersonCorpse';
+import { UpdateFoundPersonCorpse } from './pages/found/UpdateFoundPersonCorpse';
 
 function HeroSection() {
   return (
@@ -30,7 +27,7 @@ function HeroSection() {
   );
 }
 
-function FeatureCard({ icon: Icon, title, description }: { icon: any; title: string; description: string }) {
+function FeatureCard({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) {
   return (
     <div className="bg-white p-6 md:p-8 rounded-lg shadow-md">
       <div className="flex flex-col md:flex-row md:items-center mb-4">
@@ -86,19 +83,23 @@ function App() {
   return (
     <Router>
       <Routes>
-      <Route path="/" element={<HomePage />} />
-        <Route path="/lost/add" element={<AddLostPerson />} />
-        <Route path="/found/add-person" element={<AddFoundPerson />} />
-        <Route path="/found/add-corpse" element={<AddFoundCorpse />} />  {/* New route for AddFoundCorpse */}
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/person-at-risk" element={<AddPersonAtRisk />} />
+        <Route path="/signup" element={<SignUp />} />  {/* Uncommented SignUp Route */}
+        
+        {/* Lost Person Routes */}
+        <Route path="/lost/add" element={<AddLostPerson />} />
         <Route path="/lost/search" element={<SearchLostPerson />} />
         <Route path="/lost/update" element={<UpdateLostPerson />} />
-        
-        {/* New Route for Searching Among Found Persons/Corpses */}
+
+        {/* Found Person Routes */}
+        <Route path="/found/add-person" element={<AddFoundPerson />} />
+        <Route path="/found/add-corpse" element={<AddFoundCorpse />} />
         <Route path="/found/search" element={<SearchFoundPersonCorpse />} />
         <Route path="/found/update" element={<UpdateFoundPersonCorpse />} />
 
+        {/* Person At Risk Routes */}
+        <Route path="/person-at-risk" element={<AddPersonAtRisk />} />
       </Routes>
     </Router>
   );

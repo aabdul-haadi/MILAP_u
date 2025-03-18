@@ -1,91 +1,98 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+// import { Navbar } from '../components/Navbar'; // Uncomment when you're ready to use Navbar
 
 export function Login() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  // Handle form submission
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Validate user input before submission
+    if (!username || !password) {
+      alert('Please enter both username and password');
+      return;
+    }
+    console.log('Login successful:', { username, password });
+    // Implement login logic (API call or other actions)
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          {isLogin ? 'Sign in to your account' : 'Create your account'}
-        </h2>
-      </div>
+    <div className="min-h-screen bg-white flex flex-col">
+      {/* Navbar (Uncomment when needed) */}
+      {/* <Navbar isLoggedIn={false} username="" onLogout={() => {}} /> */}
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Email address
-              </label>
-              <div className="mt-1">
-                <input
-                  type="email"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                />
-              </div>
-            </div>
+      <div className="flex flex-col justify-center items-center flex-grow px-4 sm:px-6 lg:px-8">
+        <div className="sm:max-w-md w-full">
+          <h2 className="text-center text-2xl font-bold text-gray-900">
+            SIGN IN
+          </h2>
+          <div className="w-24 h-1 bg-blue-900 mx-auto mt-1"></div>
+        </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
-              <div className="mt-1">
-                <input
-                  type="password"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                />
-              </div>
-            </div>
-
-            {!isLogin && (
+        <div className="sm:max-w-md w-full mt-6">
+          <div className="bg-white py-6 px-4 shadow-md rounded-lg sm:px-10 border border-gray-300">
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              {/* Username Input */}
               <div>
                 <label className="block text-sm font-medium text-gray-700">
-                  Confirm Password
+                  Username *
                 </label>
-                <div className="mt-1">
-                  <input
-                    type="password"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                  />
-                </div>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm"
+                  placeholder="Enter your username"
+                />
               </div>
-            )}
 
-            <div>
+              {/* Password Input */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-900 focus:border-blue-900 sm:text-sm"
+                  placeholder="Enter your password"
+                />
+              </div>
+
+              {/* OR Divider */}
+              <div className="relative flex items-center my-4">
+                <div className="flex-grow border-t border-gray-300"></div>
+                <span className="px-2 text-sm text-gray-500">OR</span>
+                <div className="flex-grow border-t border-gray-300"></div>
+              </div>
+
+              {/* Verify Button */}
+              <button
+                type="button"
+                className="w-full flex justify-center py-2 px-4 border border-blue-900 rounded-md text-blue-900 font-semibold hover:bg-blue-900 hover:text-white transition"
+              >
+                VERIFY THROUGH EMAIL / PHONE NUMBER
+              </button>
+
+              {/* Login Button */}
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                className="w-full flex justify-center py-2 px-4 bg-blue-900 text-white font-semibold rounded-md hover:bg-blue-800 transition"
               >
-                {isLogin ? 'Sign in' : 'Sign up'}
+                LOGIN
               </button>
-            </div>
-          </form>
+            </form>
 
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
-                  {isLogin ? "Don't have an account?" : "Already have an account?"}
-                </span>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <button
-                onClick={() => setIsLogin(!isLogin)}
-                className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-green-600 bg-green-50 hover:bg-green-100"
-              >
-                {isLogin ? 'Sign up' : 'Sign in'}
-              </button>
-            </div>
+            {/* Register Link */}
+            <p className="mt-4 text-center text-sm text-gray-600">
+              Don't have an account?{' '}
+              <Link to="/signup" className="text-blue-900 font-medium hover:underline">
+                Create Account
+              </Link>
+            </p>
           </div>
         </div>
       </div>
